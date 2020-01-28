@@ -1,25 +1,23 @@
-name: Node.js CI
+name: Build and Deploy
 
 on: [push]
 
 jobs:
-  build:
+  build-and-deploy:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - name: Checkout
+      uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
       with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm run build --if-present
-    - run: npm test
+        persist-credentials: false
+    - name: Build and Deploy
+      uses: kulkdeepika/github-pages-deploy-action@releases/v3
+      with:
+       
+        BRANCH: master # The branch the action should deploy to.
+        FOLDER: build # The folder the action should deploy.
       env:
         CI: true
         ytApiKey: ${{ secrets.ytAPI_Key }}
