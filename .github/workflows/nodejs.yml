@@ -5,13 +5,23 @@ on: [push]
 jobs:
   build-and-deploy:
 
-    runs-on: ubuntu-latest
-
+    runs-on: windows-latest
+    
     steps:
     - name: Checkout
       uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
       with:
         persist-credentials: false
+    - name: Upload Artifacts 
+      uses: actions/upload-artifact@v1
+      with:
+        name: site
+        path: .
+        
+    - name: Download Artifacts
+      uses: actions/download-artifact@v1
+      with:
+        name: site
     - name: Build and Deploy
       uses: JamesIves/github-pages-deploy-action@3.2.1
       with:
