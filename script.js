@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+window.secrets;
+
 var team1;
 var team2;
 var team1FullName;
@@ -209,7 +212,7 @@ function getVideo() {
       type: 'GET',
       url: 'https://www.googleapis.com/youtube/v3/search?regionCode=GB',
       data: {
-          key: API_KEY,
+          key: secrets.API_KEY,
           q: searchString,
           part: 'snippet',
           maxResults: 4,
