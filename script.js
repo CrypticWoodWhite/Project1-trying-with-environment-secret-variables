@@ -16,7 +16,6 @@ var dateScheduled;
 
 var firstPage = $("#pageOne");
 var secondPage = $("#pageTwo");
-
 var displayDate = $("#date");
 var displayWinner = $("#winner");
 var displayScore = $("#score");
