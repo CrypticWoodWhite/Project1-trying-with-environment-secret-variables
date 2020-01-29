@@ -11,4 +11,4 @@ jobs:
       - name: Decrypt large secret
         run: ./.github/scripts/decrypt.sh
         env:
-          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
