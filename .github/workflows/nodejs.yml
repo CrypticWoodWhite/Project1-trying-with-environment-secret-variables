@@ -20,4 +20,5 @@ jobs:
         FOLDER: build # The folder the action should deploy.
       env:
         CI: false
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} 
         ytApiKey: ${{ secrets.ytAPI_Key }}
