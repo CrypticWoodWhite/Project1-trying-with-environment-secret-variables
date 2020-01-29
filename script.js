@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-window.secrets;
-
 var team1;
 var team2;
 var team1FullName;
