@@ -209,7 +209,7 @@ function getVideo() {
       type: 'GET',
       url: 'https://www.googleapis.com/youtube/v3/search?regionCode=GB',
       data: {
-          key: ytApiKey,
+          key: API_KEY,
           q: searchString,
           part: 'snippet',
           maxResults: 4,
