@@ -1,18 +1,18 @@
-name: CI
+name: Workflows with large secrets
 
-on: [push]
+on: push
 
 jobs:
-  build:
-
+  my-job:
+    name: My Job
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Hello world action
-      with: # Set the secret as an input
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        API_KEY: ${{ secrets.API_KEY }}
-      env: # Or as an environment variable
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        API_KEY: ${{ secret.API_KEY }}
+      - uses: actions/checkout@v2
+      - name: Decrypt large secret
+        run: ./.github/scripts/decrypt_secret.sh
+        env:
+          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+      # This command is just an example to show your secret being printed
+      # Ensure you remove any print statements of your secrets. GitHub does
+      # not hide secrets that use this workaround.
+        run: cat $HOME/secrets/my_secret.json
